@@ -1,7 +1,7 @@
 {
   "name": "loobee/ddd",
-  "description": "",
-  "keywords": [],
+  "description": "Domain-Driven Design library",
+  "keywords": ["DDD", "domain driven design"],
   "homepage": "https://github.com/Loobee/Ddd",
   "license": "MIT",
   "authors": [
