@@ -1,0 +1,6 @@
+services:
+  loobee_ddd.application.notification.public_event_subscriber:
+    class: Loobee\Ddd\Application\Notification\PublicEventSubscriber
+    public: false
+    arguments: ["@loobee_ddd.application.notification.notification_repository"]
+    tags: [{ name: loobee_ddd.event_subscriber }]

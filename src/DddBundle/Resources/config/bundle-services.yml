@@ -1,0 +1,7 @@
+services:
+  loobee_ddd.ddd_bundle.event_listener.event_manager_listener:
+    class: Loobee\Ddd\DddBundle\EventListener\EventManagerListener
+    arguments:
+      - []
+      - "@loobee_ddd.domain.event.event_manager"
+    tags: [{ name: kernel.event_subscriber }]

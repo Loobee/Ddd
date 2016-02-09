@@ -1,0 +1,40 @@
+services:
+  # Application
+  loobee_ddd.application.service.doctrine_session:
+    alias: loobee_ddd.infrastructure.application.service.doctrine_session
+
+  # Domain\Model\Identifier
+  loobee_ddd.domain.model.identifier.identifier_service:
+    class: Loobee\Ddd\Domain\Model\Identifier\IdentifierService
+    arguments: ["@loobee_ddd.domain.model.identifier.identity_builder"]
+
+  # Domain\Event
+  loobee_ddd.domain.event.event_manager:
+    class: Loobee\Ddd\Domain\Event\EventManager
+    public: false
+
+  # Domain\Mailer
+  loobee_ddd.domain.mailer.mailer_message_builder_abstract:
+    abstract: true
+    calls:
+      - [setFrom, ["%system_email%"]]
+
+  loobee_ddd.domain.mailer.mailer_service:
+    alias: loobee_ddd.infrastructure.domain.mailer.mailer_service_adapter
+
+  loobee_ddd.domain.mailer.default_mailer_message_builder:
+    class: Loobee\Ddd\Domain\Mailer\DefaultMailerMessageBuilder
+    parent: loobee_ddd.domain.mailer.mailer_message_builder_abstract
+    public: false
+    arguments: ["@swiftmailer.mailer"]
+
+  loobee_ddd.domain.mailer.template_mailer_message_builder:
+    alias: loobee_ddd.infrastructure.domain.mailer.twig_mailer_message_builder
+
+  # Domain\Cache
+  loobee_ddd.domain.cache.cache_manager:
+    alias: loobee_ddd.infrastructure.domain.cache.redis_cache
+
+  # Domain\Validator
+  loobee_ddd.domain.validator.assertion:
+    alias: loobee_ddd.infrastructure.domain.model.validator.assertion_adapter

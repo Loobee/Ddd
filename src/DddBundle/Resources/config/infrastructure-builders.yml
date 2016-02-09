@@ -1,0 +1,5 @@
+services:
+
+  loobee_ddd.infrastructure.domain.model.identifier.identity_builder:
+    class: Loobee\Ddd\Infrastructure\Domain\Model\Identifier\IdentityBuilder
+    public: false

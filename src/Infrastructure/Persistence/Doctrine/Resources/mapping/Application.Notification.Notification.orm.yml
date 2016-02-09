@@ -1,0 +1,15 @@
+Loobee\Ddd\Application\Notification\Notification:
+  type: entity
+  table: loobee_ddd_events
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    occurred_on:
+      type: datetime
+    event_type:
+      type: string
+      length: 255
+    event_body:
+      type: text

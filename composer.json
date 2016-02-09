@@ -1,0 +1,38 @@
+{
+  "name": "loobee/ddd",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/Loobee/Ddd",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andrey Savitsky",
+      "email": "qRoC.Work@gmail.com"
+    }
+  ],
+  "type": "library",
+  "autoload": {
+    "psr-4": {"Loobee\\Ddd\\": "src/"}
+  },
+  "autoload-dev": {
+    "psr-4": {"Loobee\\Ddd\\": "tests/"}
+  },
+  "require": {
+    "php": ">=7.0",
+    "jms/serializer"   : "~1.1",
+    "beberlei/assert"  : "~2.4",
+    "react/event-loop" : "~0.4",
+    "ramsey/uuid"      : "~3.1"
+  },
+  "suggest": {
+    "symfony/symfony" : "Integration with Symfony",
+    "doctrine/orm"    : "Integration with Doctrine",
+    "videlalvaro/php-amqplib" : "For support notification system"
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}

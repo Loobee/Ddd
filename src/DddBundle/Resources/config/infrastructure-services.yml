@@ -1,0 +1,36 @@
+services:
+
+  # Application
+  loobee_ddd.infrastructure.application.service.doctrine_session:
+    class: Loobee\Ddd\Infrastructure\Application\Service\DoctrineSession
+    arguments: ["@doctrine.orm.entity_manager"]
+
+  # Infrastructure\Domain\Mailer
+  loobee_ddd.infrastructure.domain.mailer.mailer_service_adapter:
+    class: Loobee\Ddd\Infrastructure\Domain\Mailer\MailerServiceAdapter
+    public: false
+    arguments: ["@swiftmailer.mailer"]
+
+  loobee_ddd.infrastructure.domain.mailer.twig_mailer_message_builder:
+    class: Loobee\Ddd\Infrastructure\Domain\Mailer\TwigMailerMessageBuilder
+    parent: loobee_ddd.domain.mailer.mailer_message_builder_abstract
+    public: false
+    arguments: ["@twig"]
+
+  # Infrastructure\Domain\Cache
+  loobee_ddd.infrastructure.domain.cache.redis_cache:
+    class: Loobee\Ddd\Infrastructure\Domain\Cache\DoctrineRedisCacheFactory
+    arguments: ["redis"]
+    public: false
+
+  # Infrastructure\Domain\Validator
+  loobee_ddd.infrastructure.domain.model.validator.assertion_adapter:
+    class: Loobee\Ddd\Infrastructure\Domain\Validator\AssertionAdapter
+    public: false
+
+  # Infrastructure\Domain\Event
+  loobee_ddd.infrastructure.domain.event.collect_events_from_entities:
+    class: Loobee\Ddd\Infrastructure\Domain\Event\CollectEventsFromEntities
+    arguments: ["@loobee_ddd.domain.event.event_manager"]
+    public: false
+    tags: [{ name: doctrine.event_subscriber }]

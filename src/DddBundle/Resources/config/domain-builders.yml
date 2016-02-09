@@ -1,0 +1,4 @@
+services:
+  loobee_ddd.domain.model.identifier.identity_builder:
+    alias: loobee_ddd.infrastructure.domain.model.identifier.identity_builder
+    public: false

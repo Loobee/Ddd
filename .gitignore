@@ -1,0 +1,10 @@
+# IntelliJ project files
+.idea
+*.iml
+
+# OSX
+.DS_Store
+
+#
+composer.lock
+vendor/

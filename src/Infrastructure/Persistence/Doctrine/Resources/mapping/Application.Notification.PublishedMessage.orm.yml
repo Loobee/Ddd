@@ -1,0 +1,12 @@
+Loobee\Ddd\Application\Notification\PublishedMessage:
+  type: entity
+  table: loobee_ddd_events_published_message
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    most_recent_published_message_id:
+      type: integer
+    type_name:
+      type: string

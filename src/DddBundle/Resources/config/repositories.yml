@@ -1,0 +1,18 @@
+services:
+
+  loobee_ddd.infrastructure.persistence.application.notification.doctrine_notification_repository:
+    class: Loobee\Ddd\Infrastructure\Persistence\Application\Notification\DoctrineNotificationRepository
+    public: false
+    arguments: ["@doctrine.orm.entity_manager"]
+
+  loobee_ddd.application.notification.notification_repository:
+    alias: loobee_ddd.infrastructure.persistence.application.notification.doctrine_notification_repository
+
+
+  loobee_ddd.infrastructure.persistence.application.notification.doctrine_published_message_repository:
+    class: Loobee\Ddd\Infrastructure\Persistence\Application\Notification\DoctrinePublishedMessageRepository
+    public: false
+    arguments: ["@doctrine.orm.entity_manager"]
+
+  loobee_ddd.application.notification.published_message_repository:
+    alias: loobee_ddd.infrastructure.persistence.application.notification.doctrine_published_message_repository

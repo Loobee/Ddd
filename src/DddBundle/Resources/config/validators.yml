@@ -1,0 +1,7 @@
+services:
+
+  loobee_ddd.domain.validator.validator:
+    class: Loobee\Ddd\Domain\Validator\Validator
+    abstract: true
+    calls:
+      - [setAssertion, ["@loobee_ddd.domain.validator.assertion"]]
