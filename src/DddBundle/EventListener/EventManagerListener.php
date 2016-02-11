@@ -3,13 +3,12 @@
 namespace Loobee\Ddd\DddBundle\EventListener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Console\ConsoleEvents;
 use Loobee\Ddd\Domain\Event\EventManager;
 use Loobee\Ddd\Domain\Event\EventSubscriberInterface as DomainEventSubscriberInterface;
 use InvalidArgumentException;
-use Symfony\Component\Console\Event\ConsoleCommandEvent;
+use Doctrine\ORM\EntityManager;
 
 class EventManagerListener implements EventSubscriberInterface
 {
@@ -39,39 +38,23 @@ class EventManagerListener implements EventSubscriberInterface
             }
         }
 
-        $this->subscribers = $subscribers;
-        $this->event_manager = $event_manager;
+        $this->subscribers    = $subscribers;
+        $this->event_manager  = $event_manager;
     }
 
 
     public static function getSubscribedEvents()
     {
         return [
-            KernelEvents::REQUEST    => 'onRequest',
-            ConsoleEvents::COMMAND   => 'onCommand',
-            KernelEvents::RESPONSE   => 'onTerminate', // TODO: ::TERMINATE In prod mode
+            KernelEvents::RESPONSE   => 'onTerminate',
             ConsoleEvents::TERMINATE => 'onTerminate'
         ];
     }
 
     public function onTerminate()
     {
+        $this->subscribe();
         $this->event_manager->publishEventContainers();
-    }
-
-    public function onRequest(GetResponseEvent $event)
-    {
-        if (!$event->isMasterRequest())
-        {
-            return;
-        }
-
-        $this->subscribe();
-    }
-
-    public function onCommand(ConsoleCommandEvent $event)
-    {
-        $this->subscribe();
     }
 
     private function subscribe()
@@ -83,6 +66,4 @@ class EventManagerListener implements EventSubscriberInterface
 
         $this->subscribers = [];
     }
-
-
 }
