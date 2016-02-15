@@ -20,12 +20,17 @@ class Criteria
     private $field_filters = [];
 
     /**
+     * @var FieldOrder[]
+     */
+    private $field_orders = [];
+
+    /**
      * @param int $page
      * @param int $rows_per_page
      */
     public function __construct($page = 1, $rows_per_page = 10)
     {
-        $this->page          = $page;
+        $this->setPage($page);
         $this->rows_per_page = $rows_per_page;
     }
 
@@ -45,6 +50,11 @@ class Criteria
      */
     public function setPage($page)
     {
+        if ($page < 1)
+        {
+            $page = 1;
+        }
+
         $this->page = $page;
 
         return $this;
@@ -86,6 +96,26 @@ class Criteria
     public function addFieldFilter(FieldFilter $field_filter)
     {
         $this->field_filters[] = $field_filter;
+
+        return $this;
+    }
+
+    /**
+     * @return FieldOrder[]
+     */
+    public function getFieldOrders()
+    {
+        return $this->field_orders;
+    }
+
+    /**
+     * @param FieldOrder $field_order
+     *
+     * @return Criteria
+     */
+    public function addFieldOrder(FieldOrder $field_order)
+    {
+        $this->field_orders[] = $field_order;
 
         return $this;
     }

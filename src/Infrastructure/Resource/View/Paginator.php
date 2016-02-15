@@ -8,7 +8,7 @@ namespace Loobee\Ddd\Infrastructure\Resource\View;
 class Paginator
 {
     const kDefaultFirstFivePagesArray = [1, 2, 3, 4, 5];
-    const kDefaultRowsPerPage = 20;
+    const kDefaultRowsPerPage = 10;
     const kMinimumFirstPages = 5;
     const kFirstPageNumber = 1;
 

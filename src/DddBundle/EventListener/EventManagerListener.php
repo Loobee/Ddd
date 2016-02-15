@@ -8,7 +8,6 @@ use Symfony\Component\Console\ConsoleEvents;
 use Loobee\Ddd\Domain\Event\EventManager;
 use Loobee\Ddd\Domain\Event\EventSubscriberInterface as DomainEventSubscriberInterface;
 use InvalidArgumentException;
-use Doctrine\ORM\EntityManager;
 
 class EventManagerListener implements EventSubscriberInterface
 {

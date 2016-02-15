@@ -13,6 +13,7 @@ use Loobee\Ddd\Domain\EntityRepositorySupportChangeSetInterface;
 use Loobee\Ddd\Domain\Criteria\EntityRepositorySupportCriteriaInterface;
 use Loobee\Ddd\Domain\Criteria\Criteria;
 use Loobee\Ddd\Domain\Criteria\FieldFilter;
+use Loobee\Ddd\Domain\Criteria\FieldOrder;
 use Loobee\Ddd\Domain\Criteria\CriteriaResult;
 
 abstract class DoctrineEntityRepository implements
@@ -103,6 +104,11 @@ abstract class DoctrineEntityRepository implements
             $this->addFieldFilterToQuery($query_builder, $index, $field_filter);
         }
 
+        foreach ($criteria->getFieldOrders() as $field_order)
+        {
+            $this->addFieldOrderToQuery($query_builder, $field_order);
+        }
+
         $paginator = new Paginator($query_builder->getQuery(), false);
         $total_entities = $paginator->count();
         $pages_count = ceil($total_entities / $criteria->getRowsPerPage());
@@ -149,5 +155,14 @@ abstract class DoctrineEntityRepository implements
                 $field_filter->getField(),
                 $field_filter->getValue()
             );
+    }
+
+    /**
+     * @param QueryBuilder $query_builder
+     * @param FieldOrder $field_order
+     */
+    private function addFieldOrderToQuery(QueryBuilder $query_builder, FieldOrder $field_order)
+    {
+        $query_builder->orderBy('e.' . $field_order->getField(), $field_order->getSortType());
     }
 }
