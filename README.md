@@ -1,4 +1,4 @@
-# Loobee/Ddd
+# DDD - Domain-Driven Design
 
 Search the best approach with DDD(Domain-Driven Design).
 
