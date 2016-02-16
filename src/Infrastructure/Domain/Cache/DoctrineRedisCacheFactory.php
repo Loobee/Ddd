@@ -25,30 +25,35 @@ class DoctrineRedisCacheFactory implements CacheManagerInterface
     public function fetch($prefix, $id)
     {
         $this->redis_cache->setNamespace($prefix);
-        $this->redis_cache->fetch($id);
+
+        return $this->redis_cache->fetch($id);
     }
 
     public function contains($prefix, $id)
     {
         $this->redis_cache->setNamespace($prefix);
-        $this->redis_cache->contains($id);
+
+        return $this->redis_cache->contains($id);
     }
 
     public function save($prefix, $id, $data, $life_time = 0)
     {
         $this->redis_cache->setNamespace($prefix);
-        $this->redis_cache->save($id, $data, $life_time );
+
+        return $this->redis_cache->save($id, $data, $life_time );
     }
 
     public function delete($prefix, $id)
     {
         $this->redis_cache->setNamespace($prefix);
-        $this->redis_cache->delete($id);
+
+        return $this->redis_cache->delete($id);
     }
 
     public function clean($prefix)
     {
         $this->redis_cache->setNamespace($prefix);
-        $this->redis_cache->deleteAll();
+
+        return $this->redis_cache->deleteAll();
     }
 }
