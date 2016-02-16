@@ -1,10 +1,13 @@
 # Loobee/Ddd
+
+Search the best approach with DDD(Domain-Driven Design).
+
 IN DEV
 
 Based on http://github.com/dddinphp/ddd
 
 # Sample
-The sample application is not ready :(
+The sample application is not ready
 
 ## Application service
 ```php
