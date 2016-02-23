@@ -5,7 +5,14 @@ namespace Loobee\Ddd\Domain;
 interface EntityRepositoryInterface
 {
     /**
-     * @param string $id
+     * @param $id
+     *
+     * @return bool
+     */
+    function exist($id);
+
+    /**
+     * @param $id
      *
      * @return EntityInterface|null
      */

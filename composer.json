@@ -21,13 +21,13 @@
     "php": ">=7.0",
     "jms/serializer"   : "~1.1",
     "beberlei/assert"  : "~2.4",
-    "react/event-loop" : "~0.4",
     "ramsey/uuid"      : "~3.1"
   },
   "suggest": {
     "symfony/symfony" : "Integration with Symfony",
     "doctrine/orm"    : "Integration with Doctrine",
-    "videlalvaro/php-amqplib" : "For support notification system"
+    "php-amqplib/php-amqplib" : "For support notification system",
+    "react/event-loop" : "For support notification system"
   },
   "minimum-stability": "dev",
   "extra": {

@@ -58,6 +58,22 @@ abstract class DoctrineEntityRepository implements
      */
     abstract protected function getEntity();
 
+    public function exist($id)
+    {
+        if (empty($id))
+        {
+            return false;
+        }
+
+        $query_builder = $this->getEntityRepository()->createQueryBuilder('e')->select('1');
+
+        $query_builder->where('e.id = :id')->setParameter('id', $id);
+
+        $query_builder->setMaxResults(1);
+
+        return empty($query_builder->getQuery()->getResult());
+    }
+
     public function find($id)
     {
         return $this->getEntityRepository()->findOneById($id);
