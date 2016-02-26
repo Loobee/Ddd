@@ -58,16 +58,19 @@ class LoobeeDddExtension extends Extension implements PrependExtensionInterface
             preg_match("/^(.+)\\\\([^\\\\]+)Bundle$/si", $reflector->getNamespaceName(), $math);
 
             $prefix_ns = substr($math[1], 0, strrpos($math[1], $math[2])) . $math[2];
-            $prefix_path = DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $prefix_ns);
 
             $dir = substr($reflector->getFileName(), 0, strrpos($reflector->getFileName(), 'src')) . 'src';
 
-            if (false === strrpos($dir, $prefix_path))
+            if (file_exists($dir . $mapping_path))
             {
-                $dir .= $prefix_path;
+                $dir .= $mapping_path;
             }
+            else
+            {
+                $prefix_path = DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $prefix_ns);
 
-            $dir .= $mapping_path;
+                $dir .= $prefix_path . $mapping_path;
+            }
 
             $new_mapping[$bundle_name] = [
                 'type'      => 'yml',
