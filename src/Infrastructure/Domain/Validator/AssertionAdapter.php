@@ -2,7 +2,7 @@
 
 namespace Loobee\Ddd\Infrastructure\Domain\Validator;
 
-use Assert\Assertion;
+use Assert\Assertion;g
 use Loobee\Ddd\Domain\Validator\AssertionInterface;
 use Loobee\Ddd\Domain\Validator\InvalidArgumentException;
 
@@ -33,5 +33,30 @@ class AssertionAdapter extends Assertion implements AssertionInterface
     public function assertInArray($value, array $choices)
     {
         parent::inArray($value, $choices);
+    }
+
+    public function assertNotNull($value)
+    {
+        parent::notNull($value);
+    }
+
+    public function isInteger($value)
+    {
+        parent::integer($value);
+    }
+
+    public function isFloat($value)
+    {
+        parent::float($value);
+    }
+
+    public function inRange($value, $min, $max)
+    {
+        parent::range($value, $min, $max);
+    }
+
+    public function assertEq($value1, $value2)
+    {
+        parent::eq($value1, $value2);
     }
 }

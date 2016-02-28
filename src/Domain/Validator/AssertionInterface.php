@@ -34,4 +34,42 @@ interface AssertionInterface
      * @throws InvalidArgumentException
      */
     public function assertInArray($value, array $choices);
+
+    /**
+     * @param $value
+     *
+     * @throws InvalidArgumentException
+     */
+    public function assertNotNull($value);
+
+    /**
+     * @param $value
+     *
+     * @throws InvalidArgumentException
+     */
+    public function isInteger($value);
+
+    /**
+     * @param $value
+     *
+     * @throws InvalidArgumentException
+     */
+    public function isFloat($value);
+
+    /**
+     * @param $value
+     * @param integer $min
+     * @param integer $max
+     *
+     * @throws InvalidArgumentException
+     */
+    public function inRange($value, $min, $max);
+
+    /**
+     * @param $value1
+     * @param $value2
+     *
+     * @throws InvalidArgumentException
+     */
+    public function assertEq($value1, $value2);
 }
