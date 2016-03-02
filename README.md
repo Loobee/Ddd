@@ -35,13 +35,7 @@ class FirstSampleService implements ApplicationServiceInterface
 ```yml
      app.application.service.samples.first_sample_inner:
       class: App\Application\Service\Samples\FirstSample\FirstSampleService
-      public: false
-     app.application.service.samples.first_sample:
-      class: Loobee\Ddd\Application\Service\TransactionalApplicationServiceAdapter
-      arguments:
-        - "@app.application.service.samples.first_sample_inner"
-        - "@loobee_ddd.application.service.doctrine_session"
-        - "@loobee_ddd.domain.event.event_manager"
+      tags: [{ name: loobee_ddd.in_transaction }]
 ```
 ## Declare subscriber
 ```php
