@@ -2,7 +2,7 @@
 
 namespace Loobee\Ddd\Infrastructure\Domain\Validator;
 
-use Assert\Assertion;g
+use Assert\Assertion;
 use Loobee\Ddd\Domain\Validator\AssertionInterface;
 use Loobee\Ddd\Domain\Validator\InvalidArgumentException;
 
