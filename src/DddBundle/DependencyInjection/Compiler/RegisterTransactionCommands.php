@@ -33,7 +33,7 @@ class RegisterTransactionCommands implements CompilerPassInterface
 
     protected function wrapTransaction(ContainerBuilder $container, $service_id)
     {
-        $original_name = $service_id . '_inner';
+        $original_name = $service_id . '_original';
 
         $original = clone $container->findDefinition($service_id);
         $original->setPublic(false);
