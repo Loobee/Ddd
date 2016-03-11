@@ -1,8 +1,9 @@
 # DDD - Domain-Driven Design
 
+*Deprecated*
+
 Search the best approach with DDD(Domain-Driven Design).
 
-IN DEV
 
 Based on http://github.com/dddinphp/ddd
 
